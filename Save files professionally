@@ -1,0 +1,31 @@
+Aveti Umesh
+https://www.linkedin.com/posts/aveti-umesh-7a751623a_devops-cloud-sre-activity-7416938686505865216-Mv-2?utm_source=share&utm_medium=member_desktop&rcm=ACoAACGOFWwBXBdYtkoJw0nX7bLyQWUEVCBMsEk
+
+
+HELLO CONNECTIONS,
+
+A small Linux habit that actually matters when you work in DevOps, SRE, or Production environments.
+
+vi / vim TIP EVERY DEVOPS ENGINEER SHOULD KNOW
+
+ 👉 :x VS :wq
+
+Most engineers use :wq to save and exit a file.It works — but it’s not always the best practice.
+
+🔹 :wq – WRITE & QUIT
+
+Forces a write to disk every time
+Even when no changes were made
+Updates file metadata (timestamps)
+Can create noise in Git diffs and audits
+
+🔹 :x – SAVE ONLY IF MODIFIED & QUIT 
+
+Writes the file only when changes exist
+No unnecessary disk writes
+No unwanted timestamp updates
+Cleaner for production systems
+
+DEVOPS TAKEAWAY:
+
+NEXT TIME, TRY :x INSTEAD OF :wqThese small optimizations reflect maturity, precision, and production mindset.
