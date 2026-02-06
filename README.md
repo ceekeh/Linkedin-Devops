@@ -7,7 +7,7 @@ This Repository contains information from Linkedin
 
 
 cont.d frm video2
-    
+                                          WE can also use variables for apt/yum module during installion as can be seen below in setup module
 1)(Apt) & yum Module
 Used to install a package in the ansible client.
 eg  ...  ansible all -m apt -a "name=apache2 state=present" -b       .... *** 
@@ -32,7 +32,7 @@ so we use a command called "become" to excalate our priviledges or a " -b " opti
 You can use the service module to manage services running on the remote nodes managed by Ansible. This will require extended system privileges, so make sure your remote user has sudo permissions and you include the --become option to use Ansible’s privilege escalation system. Using -K will prompt you to provide the sudo password for the connecting user.
 
 
-3)8) User Module
+3) User Module
 Used to create user accounts.  (TO create users, but you wil first craete an encrypted pW for the user)   & i bliv we need openssl for the encryption
 Create a password encryption
 Generate the password from your local environment
@@ -58,11 +58,84 @@ we will see hw to do that in playbks
 
 
 
-5) Debug module
+5)  Debug module
+Executes only on the local host to display some information- message or variable value.
+
+We do not need ssh connectivity or password for a debug module. When using the debug module, the arguments will either be
+- msg = to display a message        and   - var = to display a variable
+$ ansible all -m debug -a "var='This is a debug module'"             ******** it wil perform d task on my ansible control node display the msg on my ansible control node 
+$ ansible all -m debug -a "msg={{}}"                                 *** so am using a debug module for info so that i can get the info y bc if am printing smt like  a file
+                                                                  or perfroming a task, its been performed on the remote host, bt if i want info i can use debug so that it
+                                                              prints out info on my ansible control node and with that i can pass d arguments as either variable e.g 
+
+we can use debug mode to display these and lot of things
+$ ansible all -m debug -a "var='groups'"
+$ ansible all -m debug -a "var='groups.keys()'"
+ansible db -m debug -a "var='ansible_os_family
+
+
+
+    CUSTOM AMIs
+but what ull do here, esp in your prod env goin forward, most companies wil use what is called custom AMIs, ie an AMI that hv created bc am using it for a coy, this AMI will
+be managed by ansible b4 i craete the AMAI, i already exchange the key i pass in the key, the ssh key, you load it with all the software b4 you craete an instance for it
+so when i introduce ansible to mg8 it i dnt nid to worry abt ssh keys anymore bc this custome AMI alraedy has a user called ansible baked in, a pecific key has already been 
+exchanged so my ansible usser is already set so ill create ec2 instances based on this AMi, i can spin up a 100 instances based on this AMi.when i use that AMI , it will 
+already hv been configured to be maintained by ansible but if i just hv insatnces that exists in aws then we ll see hw i can use dynamic inventory script that wil go into aws 
+search tru d region, get all d inastnces and return that as an inventory then ansible wil use the ip addreses and go out and just do configuration.
+
+
+
+   ANSIBLE PLAYBOOKS (are written in YAML) playbooks run from top to bottom & task run frm top to bottom
+
+Playbooks can:
+declare configurations
+orchestrate steps of any manual ordered process, on multiple sets of machines, in a defined order
+launch tasks synchronously or asynchronously
+Playbooks record and execute Ansible’s configuration, deployment, and orchestration functions.
+
+They can describe a policy you want your remote systems to enforce, or a set of steps in a general IT process.
+If Ansible modules are the tools in your workshop, playbooks are your instruction manuals,(ie playbk gives ansible the instruction on what to do) and your inventory of hosts
+are your raw material.  (ie these instructions always happens on your inventory, on the host that u hv defined )
+
+At a basic level, playbooks can be used to manage configurations of and deployments to remote machines. At a more advanced level, they can sequence multi-tier rollouts 
+involving rolling updates, and can delegate actions to other hosts, interacting with monitoring servers and load balancers along the way.
+
+Playbooks are designed to be human-readable and are developed in a basic text language. There are multiple ways to organize playbooks and the files they include.
+
+
+Playbooks with multiple ‘plays’ can orchestrate multi-machine deployments, running one play on your webservers, then another play on your database servers, then a third play
+on your network infrastructure, and so on. (ie if u hv multiple play u can hv dif target, one play targeting db instances, the other web instances bc each play wil hv diff
+arguments, it will v a host and it will hv task   *********** 1:53:20
+
+At a minimum, each play defines two things:
+the managed nodes to target, using a pattern
+at least one task to execute (and this task wil hv  a module, ie what are you trying to do in this particular node) 
+
+ Ansible task execution
+When you run a playbook, Ansible returns information about connections,the name lines of all your plays and tasks, whether each task has succeeded or failed on each machine,
+and whether each task has made a change on each machine.
+
+At the bottom of the playbook execution, Ansible provides a summary of the nodes that were targeted and how they performed.
+
+General failures and fatal “unreachable” communication attempts are kept separate in the counts.
+
+
+    YAML BASICS
+
+For Ansible, nearly every YAML file starts with a list.
+Each item in the list is a list of key/value pairs, commonly called a “hash” or a “dictionary”.
+So, we need to know how to write lists and dictionaries in YAML.
+All YAML files can optionally begin with --- and end with ... . This is part of the YAML format and indicates the start and end of a document.
+All members of a list are lines beginning at the same indentation level starting with a "- " (a dash and a space):
+
+
+
+
 
 
 *********
 
+Generated the Ansible.cfg file in the an
 1)using apt module, we installed apache package manager on all the host servers (both db & web), we applied the -b root priviledge.
 2)using yum module, we installed httpd package manger was installed on the web grp 
 3) using service module, ngnix was installed on the db grp
@@ -71,10 +144,12 @@ we will see hw to do that in playbks
 5)using the setup module:
 ansible web -m setup                    ****** it will return info abt this redhat server
 some of the facts returned are like variables that can be accessesed and we wil see hw to do that
+   
     USING THE SETUP MODULE & VARIABLES
 if i wanted to,i can use a variable to find the architecture of my server, i can use it as a filter
 therfor i can use my setup module and call these variables
 ill say if ansible architecture"  is  x86_64 , i can pass condition like that 
 then ansible will go out bc of the setup module, it will look for servers or host that has this architecture and those are the servers that its going to perform  a task on  
 
-6) 
+
+6)   
