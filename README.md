@@ -72,7 +72,7 @@ we can use debug mode to display these and lot of things
 $ ansible all -m debug -a "var='groups'"
 $ ansible all -m debug -a "var='groups.keys()'"
 ansible db -m debug -a "var='ansible_os_family
-
+ 
 
 
     CUSTOM AMIs
