@@ -4,9 +4,47 @@ This Repository contains information from Linkedin
 
 
 
+video 3 class34
+prof manually installed ansible 
+
+Ticket01: provision an ec2-instance in aws call ansible using ubuntu 
+Search official documentation for creating aws ec2-instance
 
 
+Ticket:                  ********** 17:36
+  Create 3 appservers using terraform. 
+  Use ansible to create ansible_user in the servers.   
+
+
+
+ UsersMGT
+    FilesMGT
+    deploymentMGT
+    ServicesMGT
+    PackagesMGT
+
+  Ansible concepts:
+1. Ansible commands:  
+
+2. Ansible modules: are python scripts that can be invoke in playbooks 
+   modules = ping / shell / command / apt / yum / copy 
+3. playbooks:
+============
+Playbooks
+  It's a configuration script written in yml. It contains plays and tasks.
+  those tasks will be executed in the hosts.
+4. roles  
+5. Ansible galaxy   
+6. Inventory = static and dynamic 
+
+  
+
+
+
+
+class33
 cont.d frm video2
+
                                           WE can also use variables for apt/yum module during installion as can be seen below in setup module
 1)(Apt) & yum Module
 Used to install a package in the ansible client.
@@ -93,6 +131,8 @@ orchestrate steps of any manual ordered process, on multiple sets of machines, i
 launch tasks synchronously or asynchronously
 Playbooks record and execute Ansible’s configuration, deployment, and orchestration functions.
 
+CLASS34: ansible modules are python scripts that can be invoked in a playbook
+
 They can describe a policy you want your remote systems to enforce, or a set of steps in a general IT process.
 If Ansible modules are the tools in your workshop, playbooks are your instruction manuals,(ie playbk gives ansible the instruction on what to do) and your inventory of hosts
 are your raw material.  (ie these instructions always happens on your inventory, on the host that u hv defined )
@@ -152,4 +192,5 @@ ill say if ansible architecture"  is  x86_64 , i can pass condition like that
 then ansible will go out bc of the setup module, it will look for servers or host that has this architecture and those are the servers that its going to perform  a task on  
 
 
-6)   
+6)  
+   
