@@ -14,20 +14,60 @@ Search official documentation for creating aws ec2-instance
 Ticket:                  ********** 17:36
   Create 3 appservers using terraform. 
   Use ansible to create ansible_user in the servers.   
+***1.04 .... we can use playbooks to achieve this task 
+
+  43:00
+************* while your creating the server it comes with a default user
 
 
 
- UsersMGT
+
+  ANSIBLE CONCEPTS:
+1. Ansible commands:
+   
+    UsersMGT
     FilesMGT
     deploymentMGT
-    ServicesMGT
+    ServicesMGT ...  the command ...........     free -m falls under sysytem mgt
     PackagesMGT
 
-  Ansible concepts:
-1. Ansible commands:  
+3. Ansible modules: are python scripts that can be invoke in playbooks 
+   modules = ping / shell / command / apt / yum / copy
 
-2. Ansible modules: are python scripts that can be invoke in playbooks 
-   modules = ping / shell / command / apt / yum / copy 
+    eg
+instead of using shell i can use command
+i can use the command module : ansible web -m command -a "df -h" -i myhosts
+OR 
+i Can use only the arguments and it will still work:
+ansible web -a "df -h" -i myhosts  
+
+
+
+  ping / :
+       ansible all -m ping
+    command / :
+       ansible all -m commad -a "ping"
+       ansible all -m shell -a "ping"
+
+       shell / :
+       ansible all -m shell -a "ping"
+       ansible docker -m shell -a "apt install docker.io"
+    service/systemd / systemctl / :
+       ansible db -m service -a "name=sshd state=restarted"
+       ansible db -m systemd -a "name=httpd state=started"
+copy :
+ ansible app -m copy -a "src=/home/ansible/app.war dest=/opt/tomcat/webapps/"
+ ansible web -m copy -a "src=/home/ansible/index.html dest=/var/www/html/"
+    yum / apt / package:  
+      ansible app -m yum -a "name=httpd state=present"
+      ansible app -m yum -a "name=httpd state=absent"
+      ansible docker -m apt -a "name=docker.i state=present"
+
+
+THE DEFAULT MODULES are:
+  command and setups modules 
+
+  
 3. playbooks:
 ============
 Playbooks
@@ -37,7 +77,33 @@ Playbooks
 5. Ansible galaxy   
 6. Inventory = static and dynamic 
 
-  
+
+PLUGGINS   vide0 3b
+ take not ethAT IN LANdmark we provison resources in aws 
+so for u to use dynamic inventory to search for resources, classify and configure them bc dynamic inventory uses scripts and pluggings to classify hostfrm a cloud env or 
+provider and the provider to tk note of which we use in landmark in aws 
+and we can provison resources using either a static inventory file or a dynamic inventory file 
+we hv a common script sthat we hv used in previous cloasses called ec2.py, its a python script and for u to use that script u need ec2.ini
+with the help of these 2 scripts we can dynamically search for resources from aws , these are python scripts
+but now assible can also use pluggins, we hv pluggin in ansible 
+
+types of script:
+ec2.py, and 
+ec2.ini
+
+we hv so many pluggins with ansible:
+ec2   
+
+********** if you hv this pluggin for ansible you can fetch for servers in ansible, servers in your aws account
+
+if you run these scripts in your env, it will dynamiclaly fetch for resources in aws and classify them 
+whwn we return frm our break we will see how we can use scripts and pluggins
+thers are many pluggins to take advantage of but the one we will major on is ec2 bc we are goin to be configuring dynamically ec2 instances and we  will see hw ansible can 
+go to our aws account and search for all our appl servers and configure them 
+
+##
+
+
 
 
 
