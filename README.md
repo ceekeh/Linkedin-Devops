@@ -10,6 +10,7 @@ prof manually installed ansible
 Ticket01: provision an ec2-instance in aws call ansible using ubuntu 
 Search official documentation for creating aws ec2-instance
 
+He also used ansible to install tomact
 
 Ticket:                  ********** 17:36
   Create 3 appservers using terraform. 
@@ -18,7 +19,6 @@ Ticket:                  ********** 17:36
 
   43:00
 ************* while your creating the server it comes with a default user
-
 
 
 
@@ -103,6 +103,8 @@ i can use ansible to mg8 deployment in k8 , having seen the list of modules, yes
     api_version: v1
     kind: Namespace
     state: present
+
+
 
 
 
@@ -268,7 +270,7 @@ ansible db -m debug -a "var='ansible_os_family
  
 
 
-    CUSTOM AMIs
+ 6)   CUSTOM AMIs
 but what ull do here, esp in your prod env goin forward, most companies wil use what is called custom AMIs, ie an AMI that hv created bc am using it for a coy, this AMI will
 be managed by ansible b4 i craete the AMAI, i already exchange the key i pass in the key, the ssh key, you load it with all the software b4 you craete an instance for it
 so when i introduce ansible to mg8 it i dnt nid to worry abt ssh keys anymore bc this custome AMI alraedy has a user called ansible baked in, a pecific key has already been 
@@ -279,7 +281,7 @@ search tru d region, get all d inastnces and return that as an inventory then an
 
 
 
-   ANSIBLE PLAYBOOKS (are written in YAML) playbooks run from top to bottom & task run frm top to bottom
+7)   ANSIBLE PLAYBOOKS (are written in YAML) playbooks run from top to bottom & task run frm top to bottom
 
 Playbooks can:
 declare configurations
@@ -307,7 +309,7 @@ At a minimum, each play defines two things:
 the managed nodes to target, using a pattern
 at least one task to execute (and this task wil hv  a module, ie what are you trying to do in this particular node) 
 
- Ansible task execution
+8) Ansible task execution
 When you run a playbook, Ansible returns information about connections,the name lines of all your plays and tasks, whether each task has succeeded or failed on each machine,
 and whether each task has made a change on each machine.
 
@@ -316,7 +318,7 @@ At the bottom of the playbook execution, Ansible provides a summary of the nodes
 General failures and fatal “unreachable” communication attempts are kept separate in the counts.
 
 
-    YAML BASICS
+ 9)   YAML BASICS
 
 For Ansible, nearly every YAML file starts with a list.
 Each item in the list is a list of key/value pairs, commonly called a “hash” or a “dictionary”.
@@ -335,6 +337,53 @@ A dictionary is represented in a simple key: value form (the colon must be follo
   skill: Elite
 
 
+10) USING BECOME ON THE HOST LEVEL INORDER TO REDUCE LINES OF CODE
+   bc its now at a host level, all tasks are running with sudo right, priviledge excalation bc become has been passed on a host level rather than having to pass
+becomes for each the several tasks we hv
+
+11)  PLAYBOOK TO INSTALL HTTPD ON A WEB REPO/SAMPLE PLAYBOOKS
+
+12) CAPTURING INFO INSIDE A VAR CALLED RESULTS & USE THE DEBUG MODULE TO DISPLAY THE RESULT
+
+13) CONDITIONS
+i want to install httpd or apache
+ so am writing my playbk using a condition, am passing a condition that if my instance is ubuntu then i want to install apache using apt but if its nt ubuntu i want 
+to install httpd   ** but had to define setup module 'GATHER FACT' as true bc if the facts are not gathered then the condition we defined cant process OR pass a shell script
+
+ when: ansible_distribution != "Ubuntu"                        **** bt am passing a when, am saying install this when d ansible ditribution is nt ubuntu
+    - name: Installing apache2 using apt
+    - name: apache2
+ when: ansible_distribution == "Ubuntu"                      ********* install apache using apt when ansible distribution is ubuntu
+
+o i can see i can automate the process, i can use conditions, and am using conditions bc of the inbuilt variables which already exists, and am getting the variables 
+using my setup module, am able to read the variables then made conditions based on the variables & am able to install packages just based on the distribution
+this process has been automated
+
+**** so this is how you can use conditions
+and you can build in more logics so that ansible will use the logics you build in to mk decisions on wheter to install a package or not
+
+
+ 14)                 HOW TO SUCCESSFUL RUN PLAYBOOKS WHEN GATHER FACT IS false
+i need to find the os distribution and os name of my host, then in that case ill need to run a shell script or shell command which will cat the etc/os release to find what
+my os distribution is, then ill use the debug module to display that msg.
+
+15)
+WHEN GATHERING FACTS is TRUE, ill playbook will be shorten ***meeee.,, bc we dont have the shell script part
+
+16)   WHAT ARE HANDLERS
+these are just like ordinary task but the diff is handlers are only executed when notified, when there is a change 
+handlers only work when notified and thats hw we create depencies btw task, you can use an handler 
+
+eg i have to tasks; to install httpd & to start httpd
+so for the 2nd task, i need to pass a name for the httpd and here its start httpd, instead of putting 2nd task as a task, ill put a handler/s, in the 1st/former task ill pass a notifier/ notify & i also need to pass the name, what is this task notifying?? its notifying the name of the handler: start httpd, so the 2names must be the same, so
+the notifier notifies the handler , this happens whenevre you hv a change in this task it wil trigger the handler if ders no change in the task the handler wont be triggerd
+
+
+17)     TEMPLATE MODULE  ... illustrated with installing tomcat
+  so we use template module when you are copying the dynamic files, file that change, meaining a file that has a variable that run 
+
+
+18)   LOOP
 
 
 
