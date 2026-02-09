@@ -379,7 +379,7 @@ so for the 2nd task, i need to pass a name for the httpd and here its start http
 the notifier notifies the handler , this happens whenevre you hv a change in this task it wil trigger the handler if ders no change in the task the handler wont be triggerd
 
 
-17)     TEMPLATE MODULE  ... illustrated with installing tomcat
+17)     TEMPLATE MODULE  ... illustrated with installing tomcat using jinja2 template to replace server.xml
   so we use template module when you are copying the dynamic files, file that change, meaining a file that has a variable that run 
 
 
