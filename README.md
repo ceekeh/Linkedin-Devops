@@ -190,6 +190,7 @@ go to our aws account and search for all our appl servers and configure them
 
 
 
+
 class33
 cont.d frm video2
 
@@ -248,7 +249,13 @@ we will see hw to do that in playbks
 Executes only on the local host to display some information- message or variable value.
 
 We do not need ssh connectivity or password for a debug module. When using the debug module, the arguments will either be
-- msg = to display a message        and   - var = to display a variable
+- msg = to display a message
+- var = to display a variable       
+
+  **Default variables**                             ******** these are some variables within ansible 
+    - inventory_hostname
+    - inventory_hostname_short
+    - groups/ groups.keys()
 $ ansible all -m debug -a "var='This is a debug module'"             ******** it wil perform d task on my ansible control node display the msg on my ansible control node 
 $ ansible all -m debug -a "msg={{}}"                                 *** so am using a debug module for info so that i can get the info y bc if am printing smt like  a file
                                                                   or perfroming a task, its been performed on the remote host, bt if i want info i can use debug so that it
@@ -268,6 +275,7 @@ so when i introduce ansible to mg8 it i dnt nid to worry abt ssh keys anymore bc
 exchanged so my ansible usser is already set so ill create ec2 instances based on this AMi, i can spin up a 100 instances based on this AMi.when i use that AMI , it will 
 already hv been configured to be maintained by ansible but if i just hv insatnces that exists in aws then we ll see hw i can use dynamic inventory script that wil go into aws 
 search tru d region, get all d inastnces and return that as an inventory then ansible wil use the ip addreses and go out and just do configuration.
+
 
 
 
@@ -316,6 +324,15 @@ So, we need to know how to write lists and dictionaries in YAML.
 All YAML files can optionally begin with --- and end with ... . This is part of the YAML format and indicates the start and end of a document.
 All members of a list are lines beginning at the same indentation level starting with a "- " (a dash and a space):
 
+example:
+         a list always has "---"
+
+     DICTIONARY
+A dictionary is represented in a simple key: value form (the colon must be followed by a space):
+# An employee record martin:
+  name: Martin D'vloper 
+  job: Developer
+  skill: Elite
 
 
 
@@ -339,6 +356,35 @@ therfor i can use my setup module and call these variables
 ill say if ansible architecture"  is  x86_64 , i can pass condition like that 
 then ansible will go out bc of the setup module, it will look for servers or host that has this architecture and those are the servers that its going to perform  a task on  
 
+7) How to write playbooks
+after connecting to host ie the control serevr in vscode, 
+he created 2 dirs in the dir owned by ansible in the home of ansible  (this was defined in the script.sh configuration file, which created d dir in the home of ansible)
+the first dir he created is called ansible & he cloned the ansible repo inside it
+the 2nd dir is called testing & he craeted this file/playbk inside of the testing dir 
 
-6)  
-   
+To run ansible playbook
+        ansible playbook-i inventory_file playbook.yaml 
+        
+illustration:
+we are installling apache
+  this command installs apache; ansible db -m apt -a "name=apache2 state=present" -b
+
+HE rewrote the command into a playbk
+
+
+8)  WHEN TO USE -i, inventory
+  when our default inventory is in the host, we are not passing any inventory,  instaed we ll reference our playbk
+   bt if we hv a custom inventory then we ll pass a - i, to tell ansible we hv anoda inventory so dnt use the host file
+
+9) although we didnt add tThe SETup module in the task, it will always run except it is disable .... gather_facts: false      ***** thatis do not run the setup module
+    Added service module to the playbook
+
+10)    USING BECOME ON THE HOST LEVEL INORDER TO REDUCE LINES OF CODE
+   bc its now at a host level, all tasks are running with sudo right, priviledge excalation bc become has been passed on a host level rather than having to pass
+becomes for each the several tasks we hv
+
+11)  PLAYBOOK TO INSTALL HTTPD ON A WEB REPO/SAMPLE PLAYBOOKS
+
+12) CAPTURING INFO INSIDE A VAR CALLED RESULTS & USE THE DEBUG MODULE TO DISPLAY THE RESULT
+
+13) CONDITIONS
