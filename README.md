@@ -75,7 +75,35 @@ Playbooks
   those tasks will be executed in the hosts.
 4. roles  
 5. Ansible galaxy   
-6. Inventory = static and dynamic 
+6. Inventory = static and dynamic
+
+
+
+1:20:14                                    ALL THE MODULES AVAILABLE
+
+  ansible-doc -l | grep docker  ** to see ansible module that relates to docker
+  ansible-doc -l | grep k8s       **for kubernetes
+
+on google
+  https://docs.ansible.com/ansible/2.9/modules/list_of_all_modules.html
+these are the doumetations about modules, so if you dnt want to use command line, you can use the console 
+
+
+
+
+
+1:24:40                                          CREATING A NAME SPACE  *** **1.39.45 *********** he tried to create namespace, but this didnt work  
+
+SO ansible got everything you need,
+i can use ansible to mg8 deployment in k8 , having seen the list of modules, yes we can 
+
+- name: Create a k8s namespace
+  kubernetes.core.k8s:
+    name: testing
+    api_version: v1
+    kind: Namespace
+    state: present
+
 
 
 PLUGGINS   vide0 3b
