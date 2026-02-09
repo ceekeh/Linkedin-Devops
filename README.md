@@ -106,7 +106,31 @@ i can use ansible to mg8 deployment in k8 , having seen the list of modules, yes
 
 
 
-PLUGGINS   vide0 3b
+ vide0 3b
+ roles in ansible are similar to helm chart in k8 even though with ansible roles you actually need to input a lot of info bc ansible roles just creates a directory
+structure its actually empty directories, unlike helm that comes with a lot of content, with ansible roles you hv to enter the info that you need to enter
+
+1:20:20
+***************** we can ls roles
+
+
+Playbook composition:
+
+  1. plays = 
+       - hosts: dev 
+       - hosts: dbservers  
+  2. tasks                           ********* task is a list (list of what we can do )and each of the task wil have a name 
+  3. handlers                                ***** handlers too can be a list
+  4. modules = 
+        yum / file / apt / copy / template / script / lineinfile
+        package / shell / setup / command / ping / authorized_keys
+  5. loops
+  6. conditions
+  7. variables
+  8. roles
+
+
+PLUGGINS  
  take not ethAT IN LANdmark we provison resources in aws 
 so for u to use dynamic inventory to search for resources, classify and configure them bc dynamic inventory uses scripts and pluggings to classify hostfrm a cloud env or 
 provider and the provider to tk note of which we use in landmark in aws 
