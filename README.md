@@ -130,6 +130,20 @@ Playbook composition:
   8. roles
 
 
+Before w erun the play book we can first run these commands to check the if the playbk is well written
+ ansible-playbook apach2.yml --syntax-check
+what is dry run in ansible???
+ ansible-playbook apach2.yml --check =# dry run      *******  we will see what exactly the playbk will achieve, the diff task that wil run 
+ ansible-playbook apache.yml --step                     ** the diff task that will be executed in the playbk
+ ansible-playbook apache.yml --list-host      ******** to knw all the host listed in the playbk
+
+33:28
+********** the setup modules is resposible for gathering facts in th eplaybk
+if u want to knw aby ur os, hw your host is configured is setup module
+we can say gather facts _falsw
+
+
+
 PLUGGINS  
  take not ethAT IN LANdmark we provison resources in aws 
 so for u to use dynamic inventory to search for resources, classify and configure them bc dynamic inventory uses scripts and pluggings to classify hostfrm a cloud env or 
