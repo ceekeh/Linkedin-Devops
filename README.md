@@ -144,6 +144,22 @@ we can say gather facts _falsw
 
 
 
+Ansible role --> :
+  It's is a set of tasks, handlers, variables, files and other 
+  components organised in a predefined structure to configured specific 
+  requirements. It is easy to understand, maintained and shared.
+  Roles are used in ansible-playbooks
+
+*********** so u can hv an ansible playbk with 1000lines and you reduce it to 4lines 
+and when we create a role it will cm up with an entire directory structure, it will organise the file 
+
+1:07:12
+********* roles in ansible a re similar to helm chart in k8
+ansible-galaxy                     ****** it creates evrytin u need 
+ansible-galaxy init httpd                         * will organise all the files needed in an organised directory
+
+
+
 PLUGGINS  
  take not ethAT IN LANdmark we provison resources in aws 
 so for u to use dynamic inventory to search for resources, classify and configure them bc dynamic inventory uses scripts and pluggings to classify hostfrm a cloud env or 
