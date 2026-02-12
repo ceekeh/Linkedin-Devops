@@ -22,14 +22,22 @@ but when we say include task its giving us a range of information, the name of t
 so include is giving us more task
 again we wil see more diff btw include and import
 u ll use include when you want to include tasks that have variables ie task that change
-2)so we use import when we are using it on static data ie does not change ie we cant use import while passing a variable, video3, we use copy module when copying static file 
-3) 38.31... include task is used for dynamic data, ie we can use include task while passing a variable 
-       video 3... so we use template module when you are copying the dynamic files
+2)so we use import when we are using it on static data ie does not change ie we cant use import while passing a variable, video3; we use copy module when copying static file 
+3)include task is used for dynamic data, ie we can use include task while passing a variable , video; so we use template module when you are copying the dynamic files
 
 
 
 
-PREDEFINED/INBUILT VARIABLE
+PREDEFINED/INBUILT VARIABLE USING SETUP MODULE
+ if u pass smt inside the calibres, its a variable 
+so we hv some predefined variables or inbuilt variables 
+an ansible os family is an inbuilt varaiable
+but hw do we knw
+ansible web -m setup                                   
+once i run this , it will go to my server/host and it wil return info abt the server, which icludes predefined variables that i can access
+ ansible_processor_cores        **** i can access this info bc its a filter
+to access this i can pass it as a variable  - import_tasks: install_webserver_{{ ansible_processor_cores}}.yml
+
 
 
 CREATING A ROLE
