@@ -9,9 +9,10 @@ PLAYBOOK, USING A PLAYBOOK WITH IMPORT TASK & INCLUDE TASK TO INSTALL MULTIPLE P
  USING IMPORT WHILE PASSING A VARIABLE  WILL FAIL/IMPORT IS USED FOR STATIC DATA  & IMPORT TASK REDUCES THE LINES OF CODE ie THAT DOES NOT CHANGE, WE CAN USE INCLUDE WHILE
  PASSING A VARIABLE & INCLUDE TASK REDUCES THE LINES OF CODE, HOW TO GET PREDEFINED & INBUILT VARIABLES USING SETUP MODULE, DEFINED VARIABLES MISSPELT ISSUES, 
  CREATING ANSIBLE ROLES, ANSIBLE GALAXY TO GOOGLE ALREADY CREATED ROLES, CUSTOM ROLE pass_offline, ROLE DIRECTORY STRUCTURE & CONTENT, 
- IMPORTING/ADDING FILES & REFERRING TO THE FILES IN THE ROLE DIRECTORIES, 2 LOCATIONS FOR ANSIBLE ROLES, CREATNG A ROLE 'HTTPD', 
+ IMPORTING/ADDING FILES & REFERRING TO THE FILES IN THE ROLE DIRECTORIES, 2 LOCATIONS FOR ANSIBLE ROLES, CREATNG A CUSTOM ROLE FOR 'HTTPD',  
  CONFIGURING THE ROLE USING THE HTTPD PLAYBOOK & ADDING HANDLERS & NOTIFIERS, SPLITTING THE PLAYBOOK ie PUTTING THE DIFF PARTS OF THE PLAYBOOK IN THE RIGHT DIRECTORY, 
- THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A 'ADD A USER ROLE, USING SHELL MODULE TO PASS USER TO SUDOERS FILE, 
+ THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A ROLE TO ADD A USER IN WEBSERVER, USING SHELL MODULE TO PASS USER TO SUDOERS FILE, EXPLAINING THE TOMCAT ROLE IN THE REPO,
+ SUMMARY OF THE STEPS TO CREATE A ROLE,  CREATING A ROLE USING  the template module httpd playbook.
 
 
 
@@ -39,6 +40,12 @@ once i run this , it will go to my server/host and it wil return info abt the se
  ansible_processor_cores        **** i can access this info bc its a filter
 to access this i can pass it as a variable  - import_tasks: install_webserver_{{ ansible_processor_cores}}.yml
 
+
+ ANSIBLE ROLES
+
+Roles let you automatically load related vars,files,tasks, handlers, and other known Ansible artifacts based on a known file structure.
+
+After you group your content in roles, you can easily reuse them and share them with other users.
 
 
 ROLE DIRECTORY STRUCTURE & CONTENT
@@ -82,13 +89,14 @@ After you initialize the role, cd into the various directories and vi into the m
 
 
 
-CREATING A HTTPD ROLE & THE DIRECTORIES
-BY using the create a role command, he created & initialized a role 'httpd', the role came with all the 8 directories & he configured the role by using an existing playbook (to install httpd) he pasted the playbk in the Ansible roles dir & added handlers & notifiers to it. Next he split up the playbook ie putting the diff parts of the playbk in the right
+CREATING A CUSTOM HTTPD ROLE & THE DIRECTORIES
+BY using the create a role command, he created & initialized a role 'httpd', the role came with all the 8 directories & he configured the role by using an existing playbook (to install httpd) he pasted the playbk in the Ansible roles dir & added handlers & notifiers to it. 
+Next he split up the playbook ie putting the diff parts of the playbk in the right
 directories. eg  for the handlers part , ill copy it and paste in in the handlers (main.yml) file.
 
  CREATING THE 'ROLE PLAYBOOK' (Httpd.yml)
  After the splitting, the top part of the playbk he copied, he changed task to roles & replaced name with httpd then run the playbook
 
-CREATING A 'ADD A USER ROLE' TO ADD A USER IN WEBSERVER
-BY using the 'add a user' command, he created & initialized a dir for a user in the webserver 
-also  
+ CREATING A ROLE TO ADD A USER IN WEBSERVER
+He created the role & it is goin to create a grp using a grp module as seen in the task dir of the add_user role
+then in the top part of the httpd playbk (Httpd.yml),  he added the'user_add' role he created 
