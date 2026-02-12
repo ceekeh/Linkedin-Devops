@@ -11,7 +11,7 @@ PLAYBOOK, USING A PLAYBOOK WITH IMPORT TASK & INCLUDE TASK TO INSTALL MULTIPLE P
  CREATING ANSIBLE ROLES, ANSIBLE GALAXY TO GOOGLE ALREADY CREATED ROLES, CUSTOM ROLE pass_offline, ROLE DIRECTORY STRUCTURE & CONTENT, 
  IMPORTING/ADDING FILES & REFERRING TO THE FILES IN THE ROLE DIRECTORIES, 2 LOCATIONS FOR ANSIBLE ROLES, CREATNG A ROLE 'HTTPD', 
  CONFIGURING THE ROLE USING THE HTTPD PLAYBOOK & ADDING HANDLERS & NOTIFIERS, SPLITTING THE PLAYBOOK ie PUTTING THE DIFF PARTS OF THE PLAYBOOK IN THE RIGHT DIRECTORY, 
- THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A USER ROLE, USING SHELL MODULE TO PASS USER TO SUDOERS FILE, 
+ THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A 'ADD A USER ROLE, USING SHELL MODULE TO PASS USER TO SUDOERS FILE, 
 
 
 
@@ -41,10 +41,54 @@ to access this i can pass it as a variable  - import_tasks: install_webserver_{{
 
 
 
-CREATING A ROLE
-BY using the create a role command, he created a role 'httpd', the role came with all the 8 directories & he configured the role by using an existing playbook (to install httpd) he pasted the playbk in the Ansible roles dir & added handlers & notifiers to it. Next he split up the playbook ie putting the diff parts of the playbk in the right
+ROLE DIRECTORY STRUCTURE & CONTENT
+***** when a role is created, it gives you a directory structure, which will hv all these 8 directories & each dir must hv a main.yml file 
+
+ 
+An Ansible role has a defined directory structure with eight main standard directories.
+
+You must include at least one of these directories in each role. You can omit any directories the role does not use.
+
+By default Ansible will look in each directory within a role for a main.yml file for relevant content
+
+tasks/main.yml - the main list of tasks that the role executes.
+
+handlers/main.yml - handlers, which may be used within or outside this role.
+
+library/my_module.py - modules, which may be used within this role (see Embedding modules and plugins in roles for more information).
+
+defaults/main.yml - default variables for the role. These variables have the lowest priority of any variables available, and can be easily overridden by any other variable, including inventory variables.
+
+vars/main.yml - other variables for the role (see Using Variables for more information).
+
+files/main.yml - files that the role deploys.
+
+templates/main.yml - templates that the role deploys.
+
+meta/main.yml - metadata for the role, including role dependencies
+
+
+
+ ANSIBLE GALAXY TO GOOGLE ALREADY CREATED ROLES
+45.43          if i go to google & type ansible galaxy, there are roles that hv already been created, the roles are online
+*********    eg if i want to  create a role for prometheus and i just run the command without offline, its goin to download or intialize a role that is online 
+so if i want to create a custom role i need to pass _offline 
+
+
+                                  CUSTOM ROLE pass_offline
+This is done when we want to create a custom role.
+
+After you initialize the role, cd into the various directories and vi into the main.yml file to enter the content.
+
+
+
+CREATING A HTTPD ROLE & THE DIRECTORIES
+BY using the create a role command, he created & initialized a role 'httpd', the role came with all the 8 directories & he configured the role by using an existing playbook (to install httpd) he pasted the playbk in the Ansible roles dir & added handlers & notifiers to it. Next he split up the playbook ie putting the diff parts of the playbk in the right
 directories. eg  for the handlers part , ill copy it and paste in in the handlers (main.yml) file.
 
  CREATING THE 'ROLE PLAYBOOK' (Httpd.yml)
  After the splitting, the top part of the playbk he copied, he changed task to roles & replaced name with httpd then run the playbook
 
+CREATING A 'ADD A USER ROLE' TO ADD A USER IN WEBSERVER
+BY using the 'add a user' command, he created & initialized a dir for a user in the webserver 
+also  
