@@ -11,7 +11,8 @@ PLAYBOOK, USING A PLAYBOOK WITH IMPORT TASK & INCLUDE TASK TO INSTALL MULTIPLE P
  CREATING ANSIBLE ROLES, ANSIBLE GALAXY TO GOOGLE ALREADY CREATED ROLES, CUSTOM ROLE pass_offline, ROLE DIRECTORY STRUCTURE & CONTENT, 
  IMPORTING/ADDING FILES & REFERRING TO THE FILES IN THE ROLE DIRECTORIES, 2 LOCATIONS FOR ANSIBLE ROLES, CREATNG A CUSTOM ROLE FOR 'HTTPD',  
  CONFIGURING THE ROLE USING THE HTTPD PLAYBOOK & ADDING HANDLERS & NOTIFIERS, SPLITTING THE PLAYBOOK ie PUTTING THE DIFF PARTS OF THE PLAYBOOK IN THE RIGHT DIRECTORY, 
- THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A ROLE TO ADD A USER IN WEBSERVER, USING SHELL MODULE TO PASS USER TO SUDOERS FILE, EXPLAINING THE TOMCAT ROLE IN THE REPO,
+ THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A ROLE TO ADD A USER IN WEBSERVER, USING SHELL MODULE TO PASS USER TO SUDOERS FILE,
+ THE TOMCAT ROLE WITH VARIABLE & TEMPLATE MODULE/JINJA2 WHICH WILL ADD USER & PW
  SUMMARY OF THE STEPS TO CREATE A ROLE,  CREATING A ROLE USING  the template module httpd playbook.
 
 
@@ -41,11 +42,15 @@ once i run this , it will go to my server/host and it wil return info abt the se
 to access this i can pass it as a variable  - import_tasks: install_webserver_{{ ansible_processor_cores}}.yml
 
 
+******** so we hv seen that we can create reuseable tasks but ansible actually gives us a better way to reuse our tasks and these are called roles 
+
+
  ANSIBLE ROLES
 
 Roles let you automatically load related vars,files,tasks, handlers, and other known Ansible artifacts based on a known file structure.
 
 After you group your content in roles, you can easily reuse them and share them with other users.
+
 
 
 ROLE DIRECTORY STRUCTURE & CONTENT
