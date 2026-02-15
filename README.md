@@ -8,7 +8,7 @@ This Repository contains information from Linkedin
 PLAYBOOK, USING A PLAYBOOK WITH IMPORT TASK & INCLUDE TASK TO INSTALL MULTIPLE PACKAGES, FUNDAMENTAL DIFF BTW using import task and INCLUDE TASK in a playbook,
  USING IMPORT WHILE PASSING A VARIABLE  WILL FAIL/IMPORT IS USED FOR STATIC DATA  & IMPORT TASK REDUCES THE LINES OF CODE ie THAT DOES NOT CHANGE, WE CAN USE INCLUDE WHILE
  PASSING A VARIABLE & INCLUDE TASK REDUCES THE LINES OF CODE, HOW TO GET PREDEFINED & INBUILT VARIABLES USING SETUP MODULE, DEFINED VARIABLES MISSPELT ISSUES, 
- CREATING ANSIBLE ROLES, ANSIBLE GALAXY TO GOOGLE ALREADY CREATED ROLES, CUSTOM ROLE pass_offline, ROLE DIRECTORY STRUCTURE & CONTENT, 
+ CREATING ANSIBLE ROLES, IMPORTANCE OF ANSIBLE ROLES, ANSIBLE GALAXY TO GOOGLE ALREADY CREATED ROLES, CUSTOM ROLE pass_offline, ROLE DIRECTORY STRUCTURE & CONTENT, 
  IMPORTING/ADDING FILES & REFERRING TO THE FILES IN THE ROLE DIRECTORIES, 2 LOCATIONS FOR ANSIBLE ROLES, CREATNG A CUSTOM ROLE FOR 'HTTPD',  
  CONFIGURING THE ROLE OF THE HTTPD ie ADDING HANDLERS & NOTIFIERS, SPLITTING THE PLAYBOOK ie PUTTING THE DIFF PARTS OF THE PLAYBOOK IN THE RIGHT DIRECTORY, 
  THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A ROLE TO ADD A USER IN WEBSERVER, USING SHELL MODULE TO PASS USER TO SUDOERS FILE,
@@ -101,14 +101,61 @@ After you initialize the role, cd into the various directories and vi into the m
 
 
 
-CREATING A CUSTOM HTTPD ROLE & THE DIRECTORIES
+CREATING A PLAYBOOK WITH A CUSTOM HTTPD ROLE (THE ROLE DIRECTORIES) TO INSTALL HTTPD IN THE WEBSERVER
 BY using the create a role command, he created & initialized a role 'httpd', the role came with all the 8 directories & he configured the role by using an existing playbook (to install httpd) he pasted the playbk in the Ansible roles dir & added handlers & notifiers to it. 
 Next he split up the playbook ie putting the diff parts of the playbk in the right
 directories. eg  for the handlers part , ill copy it and paste in in the handlers (main.yml) file.
 
- CREATING THE 'ROLE PLAYBOOK' (Httpd.yml)
- After the splitting, the top part of the playbk he copied, he changed task to roles & replaced name with httpd then run the playbook
+ THE main.tf file IN THE TASK DIR OF THE ROLE TO INSTALL (Httpd.yml)
+ After the splitting, the top part of the httpd.yml file, he copied & Pasted in the main.tf in the task dir, he changed task to roles & replaced name with httpd then run the role playbook
 
- CREATING A ROLE TO ADD A USER IN WEBSERVER
-He created the role & it is goin to create a grp using a grp module as seen in the task dir of the add_user role
-then in the top part of the httpd playbk (Httpd.yml),  he added the'user_add' role he created 
+ CREATING A ROLE TO ADD A USER IN THE WEBSERVER
+He created the role to add user & it is goin to create a grp using a grp module as seen in the main.tf file in the task dir of the add_user role
+using a shell module to pass the user i just created into the sudoers file
+then in the top part of the httpd.yml file in main.tf of the task dir,  he added the'user_add' role he created 
+then run the role playbook
+
+
+A PLAYBOOK WITH A ROLE, 'VARIABLE' & 'TEMPLATE MODULE/JINJA2' TO DYNAMICALLY REPLACE VALUES & TO ADD A USER/PW  & INSTALL TOMCAT
+in continuation with video3; 
+
+IN THE TEMPLATE DIR WE HAVE (context.xml.j2, server.xml.j2,tomcat-users.xml.j2)
+
+tomcat-users.xml.j2:
+i have a templates bc ill be passisng dynamic data, i wnat to add tomcat users, i wnat to pass the tomcat roles and PW 
+SO HV copied this tomcat user.xml file and am using it as a template  and hv passed variables inside the file that will be read dynamiaclly 
+thats why am using a template, template module will read dynamic data
+so in the tomcat-users.xml.j2, hv passed PW,am passing 2roles, so  based on the roles that i pass here as my variables it is goin to dynamically do this
+how am i passing these varaibles?
+you look at your vars dir (main.yml), in there i hv all my variables for tomcat , tomcat user , PW , role , the url where am donloading my tomcat, the version, also changing 
+the  tomcat port  and am changing that port in the server.xml and bc its a ginger template , i ends with .j2 
+these are template files, all templates file  we use what is called ginger templating 
+is a file that that accepts variables, its a dynamic file , a ginger2 file
+
+
+********** in the server.xml.j2, in the connector port segment, hv passed tomcat port as a variable inside the caliibrase
+it is a varaiable bc it is goin to be read at runtime 
+where is it been read?? .... tomcat port, inside of my variables
+i just need to cm to my variables file and change, if i want my port  to be 8000 then thats the port that tomcat will run on 
+if i want to change the tomcat user name , ill change it here
+so all these things will now be dynamically passed to tomcat
+
+in the context.xml.j2
+we hv the esction that has been commeted out so that we hv access to the manger, so we can log into our tomcat
+ so these 3 templates are been passed when you look at the task
+we hv a template for authenticating with the manger
+tmeplate for configuring tomcat user credentials and roles
+template for replacing default port with required port
+and after we hv cahnged all these, we will notify our handler to start tomcat
+
+
+
+STATIC AND DYNAMIC INVENTORY:
+
+A static inventory file is a plain text file containing a list of managed hosts (just like the hostfile list we configured) or remote nodes whose numbers and IP addresses 
+remain fairly constant.
+On the other hand, a dynamic host file keeps changing as you add new hosts or decommission old ones.
+******eg(if i go into aws and create more ec2 instance, my static file will nt change bc i hv to configure it, but if i had a dynamic inventory and i created 5more instances then
+my inventory will change bc the pluggin will find and additioanl instances)
+ The IP addresses of hosts are also dynamic as you stop and start new host systems. (so bc of that, that is dynamic,so you wnat an inventory that when the system changes
+it will also chnage so that it gets the right ip)
