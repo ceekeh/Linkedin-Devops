@@ -9,11 +9,17 @@ PLAYBOOK, USING A PLAYBOOK WITH IMPORT TASK & INCLUDE TASK TO INSTALL MULTIPLE P
  USING IMPORT WHILE PASSING A VARIABLE  WILL FAIL/IMPORT IS USED FOR STATIC DATA  & IMPORT TASK REDUCES THE LINES OF CODE ie THAT DOES NOT CHANGE, WE CAN USE INCLUDE WHILE
  PASSING A VARIABLE & INCLUDE TASK REDUCES THE LINES OF CODE, HOW TO GET PREDEFINED & INBUILT VARIABLES USING SETUP MODULE, DEFINED VARIABLES MISSPELT ISSUES, 
  CREATING ANSIBLE ROLES, IMPORTANCE OF ANSIBLE ROLES, ANSIBLE GALAXY TO GOOGLE ALREADY CREATED ROLES, CUSTOM ROLE pass_offline, ROLE DIRECTORY STRUCTURE & CONTENT, 
- IMPORTING/ADDING FILES & REFERRING TO THE FILES IN THE ROLE DIRECTORIES, 2 LOCATIONS FOR ANSIBLE ROLES, CREATNG A CUSTOM ROLE FOR 'HTTPD',  
- CONFIGURING THE ROLE OF THE HTTPD ie ADDING HANDLERS & NOTIFIERS, SPLITTING THE PLAYBOOK ie PUTTING THE DIFF PARTS OF THE PLAYBOOK IN THE RIGHT DIRECTORY, 
+ IMPORTING/ADDING FILES & REFERRING TO THE FILES IN THE ROLE DIRECTORIES, 2 LOCATIONS FOR ANSIBLE ROLES, A PLAYBOOK WITH A CUSTOM ROLE TO INSTALL 'HTTPD' IN THE WEBSERVER  
+ CONFIGURING THE PLAYBK WITH ROLE TO INSTALL HTTPD ie ADDING HANDLERS & NOTIFIERS, SPLITTING THE PLAYBOOK ie PUTTING THE DIFF PARTS OF THE PLAYBOOK IN THE RIGHT DIRECTORY, 
  THE(ROLE)PLAYBOOK (Httpd.yml, CREATING A ROLE TO ADD A USER IN WEBSERVER, USING SHELL MODULE TO PASS USER TO SUDOERS FILE,
- THE TOMCAT ROLE WITH VARIABLE & TEMPLATE MODULE/JINJA2 WHICH WILL ADD USER & PW
- SUMMARY OF THE STEPS TO CREATE A ROLE, 3WAYS TO USE ROLES,  CREATING A ROLE WITH A TEMPLATE MODULE/JINJA2 FOR HTTPD
+A PLAYBOOK WITH A ROLE, 'VARIABLE' & 'TEMPLATE MODULE/JINJA2' TO DYNAMICALLY REPLACE VALUES & TO ADD A USER/PW  & INSTALL TOMCAT, 
+IN THE TEMPLATE DIR OF THE ROLE WE HAVE (context.xml.j2, server.xml.j2,tomcat-users.xml.j2), 
+ SUMMARY OF THE STEPS TO CREATE A ROLE, 3WAYS TO USE ROLES, A PLAYBOOK WITH A ROLE, 'VARIABLES' & 'TEMPLATE MODULE/JINJA2' TO DYNAMICALLY REPLACE VALUES  & INSTALL HTTPD,
+ THE TASK DIR/main.tf, OF THE ROLE TO INSTALL HTTPD, QUESTION;USING src & destination/CODE FOR FROMATTING SYNTAX, DYNAMIC INVENTORY, DYNAMIC INVENTORY PLUGGINS, 
+ STATIC AND DYNAMIC INVENTORY, CONFIGURE DYNAMIC INVENTORY FOR AWS UISNG A SCRIPT, CONFIGURE DYNAMIC INVENTORY UISNG AWS INVENTORY PLUGGIN, CONFIGURING AN (aws_ec2.yaml) INVENTORY PLUGGIN, CONFIGURING ANSIBLE.cfg FOR DYNAMIC INVENTORY, REATE IAM ROLE TO MAKE API CALLS TO THE SERVERS, USING THE SECURED METHOD ie CREATING KEYS bc IAM IS NOT WORKING, ANSIBLE SUCCESSFULLY USING THE AWS PLUGGIN TO GET THE DYNAMIC INVENTORY,  CREATING CUSTOM AMI,  PROJECT/CUSTOM AMI, CREATING THE IAM ROLE, PROJECT, 
+ THE PEREQUISITE TO PROVISION THE ENTIRE PIPELINE/INFASTRUCTURE (K8, tomcat, sonarqube, USING CUSTOM AMI),  QUESTION;CAN ANSIBLE PING INSTANCES NOT CREATED WITH TERFRM,
+PASSING TAGS IN PLAYBOOKS TO SPECIFY INSTANCES FOR CONFIGURATION, ANSIBLE VAULT.
+
  
  
  
@@ -154,8 +160,60 @@ STATIC AND DYNAMIC INVENTORY:
 
 A static inventory file is a plain text file containing a list of managed hosts (just like the hostfile list we configured) or remote nodes whose numbers and IP addresses 
 remain fairly constant.
+Dynamic inventory:
 On the other hand, a dynamic host file keeps changing as you add new hosts or decommission old ones.
 ******eg(if i go into aws and create more ec2 instance, my static file will nt change bc i hv to configure it, but if i had a dynamic inventory and i created 5more instances then
 my inventory will change bc the pluggin will find and additioanl instances)
  The IP addresses of hosts are also dynamic as you stop and start new host systems. (so bc of that, that is dynamic,so you wnat an inventory that when the system changes
 it will also chnage so that it gets the right ip)
+
+
+  CONFIGURE DYNAMIC INVENTORY FOR AWS UISNG A SCRIPT
+  1) Script
+
+Search for the ec2.py script.                    ***** we hv a python script , but to use it u need to install  boto/boto3 -SDK
+
+Install boto /boto3 -SDK
+
+You can use this script in one of two ways.
+
+a) Ansible’s -i command-line option and specify the path to the script after marking it executable
+ $ ansible -i ec2.py -u ubuntu us-east-a -m ping
+
+b) The second option is to copy the script to /etc/ansible/hosts and chmod +x it. You must also copy the ec2.ini file to /etc/ansible/ec2.ini. Then you can run ansible as
+you would normally. (ie, instead of the host file list we configure, we copy this and paste it in there, so the script now becomes you hostfile then mk sure the script is
+executable chmod +x then copy the ec2.ini file to /etc/ansible/ec2.ini dir , then run ansible as normal)
+
+2)   CONFIGURE DYNAMIC INVENTORY UISNG AWS INVENTORY PLUGGIN
+        Requirements
+Install python3-boto3
+
+then configure the  (aws_ec2.yaml) INVENTORY PLUGGIN  & the ANSIBLE.cfg
+
+   CREATE IAM ROLE TO MAKE API CALLS TO THE SERVERS
+you can attach a role to your server, a role that will mk api calls to your servers
+now in aws , he wants to attach a role to the ansible server
+he needs to give the instance permission 
+so click actions, security then modify role.
+
+
+ANSIBLE VAULT
+but ill send you a video on ansible vault , abt 10minutes 
+abt ansible vault its just commands in which you run
+ill send you a short video on hw to use ansible vault
+we jsut use ansible vault in terms of encrypting our  playbks or encrypintg our PW, sorry
+Its just smt that we need to knw abt how do we encrypt our playbk, we can use ansible vault to do that
+
+
+
+PROJECT/CUSTOM AMI
+########### so for yoU guys what ill like you to do for your project is 
+use this inventory but create a custom AMi
+what i mean is go tru the process to mk passwordless authentication just with one server
+now once you hv that one server that ansible is able to connect to, u hv used a custom iventory then u are goin to copy that AMi or rather you are goin to create an ami 
+frm that instance
+
+
+
+
+
