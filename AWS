@@ -1,0 +1,36 @@
+****** S3 BUCKET UPDATE 
+
+Akshant Tyagi
+https://www.linkedin.com/posts/akshanttyagi_aws-just-killed-the-most-annoying-thing-activity-7438926504509747200-xdVY?utm_source=share&utm_medium=member_desktop&rcm=ACoAACGOFWwBXBdYtkoJw0nX7bLyQWUEVCBMsEkMm
+
+ AWS just killed the most annoying thing about S3.
+
+For years, bucket names had to be globally unique.
+
+If someone on the other side of the world took "prod-logs"...
+
+You were stuck naming yours "prod-logs-company-us-east-1-xyz".
+
+That ends today.
+
+AWS just introduced Account Regional Namespaces.
+
+Now, your bucket name only needs to be unique within your specific account and region.
+
+You can finally just name your buckets:
+- logs
+- images
+- backups
+
+No global naming conflicts. Clean code. Predictable infrastructure.
+
+You can enable it right now in the console or via API across 37 regions.
+
+But here’s the catch.
+
+Your existing buckets are stuck on the old global model.
+
+They cannot be renamed.
+
+**************************************************************************************************
+ 
