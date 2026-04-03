@@ -33,3 +33,98 @@ But calling yourself a DevOps Engineer means owning systems, not just tools.
 
 Titles don’t make DevOps engineers.
 𝐔𝐧𝐝𝐞𝐫𝐬𝐭𝐚𝐧𝐝𝐢𝐧𝐠 𝐝𝐨𝐞𝐬.
+
+
+
+Arvind Verma
+https://www.linkedin.com/feed/update/urn:li:activity:7445960069009113089/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACGOFWwBXBdYtkoJw0nX7bLyQWUEVCBMsEk
+
+Most DevOps Engineers Get Rejected After This ONE Question
+“Tell me about a real production issue you handled end-to-end.”
+Not:
+ ❌ “What is Kubernetes?”
+ ❌ “Explain CI/CD”
+👉 This one decides your interview.
+🧠 What Interviewers Are REALLY Testing
+They don’t care if you can recite docs.
+They’re checking:
+ ✔️ Ownership
+ ✔️ Debugging mindset 🔍
+ ✔️ Decision-making under pressure
+ ✔️ Real production experience
+
+❌ Why Most Candidates Fail
+They say:
+“I checked logs… restarted the pod… it worked.”
+Congrats. You pressed the restart button. Very heroic.
+But this shows:
+ 🚫 No root cause
+ 🚫 No thinking
+ 🚫 No prevention
+ ⚙️ What a Strong Answer Looks Like
+
+Structure your answer like this:
+🔍 1. Detection
+# Check logs
+kubectl logs <pod-name>
+
+# Check pod events
+kubectl describe pod <pod-name>
+
+👉 Alerts? Monitoring? What triggered you?
+
+📊 2. Investigation
+# Check resource usage
+kubectl top pod
+
+# Check rollout status
+kubectl rollout status deployment <name>
+
+👉 CPU normal? Memory spiking? Network issue?
+
+🧪 3. Hypothesis & Validation
+👉 What did you suspect first?
+👉 What did you rule out (and why)?
+This is where most people go blank.
+
+🔥 4. Root Cause
+Not:
+ “I restarted it”
+But:
+ 👉 Config issue?
+ 👉 Memory leak?
+ 👉 Bad deployment?
+
+🛠️ 5. Fix (Short-Term + Long-Term)
+# Rollback deployment
+kubectl rollout undo deployment <name>
+
+✔️ Immediate fix
+✔️ Permanent solution
+🧠 6. Prevention
+👉 Added alerts 📊
+👉 Updated configs
+👉 Improved deployment checks
+👉 Better monitoring
+💡 Real Answer (What Impresses)
+
+Instead of:
+ “I restarted the service”
+Say:
+ 👉 “We saw a spike in 5xx errors from alerts. CPU was stable but memory kept increasing. Logs didn’t show errors, so we checked metrics. Found a memory leak after a config change. Rolled back, fixed limits, added alerts, and updated deployment checklist.”
+That’s not theory.
+That’s production thinking.
+🎯 One Truth
+
+Anyone can run:
+kubectl get pods
+
+Very few can explain:
+ 👉 Why the pod failed
+ 👉 What they learned
+ 👉 How they prevented it
+ 🔥 Closing Line
+If you can clearly explain one real incident end-to-end,
+you’re already ahead of most candidates.
+
+#DevOps 🚀 #Kubernetes ☸️ #SRE #ProductionIssues #CloudComputing ☁️ #Docker 🐳 #IncidentManagement #PlatformEngineering #InfrastructureAsCode #DevOpsEngineer #TechCareers #LearnDevOps #Automation 🤖 #AWS #CICD
