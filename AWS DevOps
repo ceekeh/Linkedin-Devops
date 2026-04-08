@@ -1,0 +1,50 @@
+https://www.linkedin.com/posts/abdulahad77_aws-devops-ai-share-7446465964654780416-4WEG?utm_source=share&utm_medium=member_desktop&rcm=ACoAACGOFWwBXBdYtkoJw0nX7bLyQWUEVCBMsEk
+
+
+Abdul Ahad.
+
+This might be the most important AWS release for DevOps engineers this year.
+
+AWS just made a serious move into the agentic world.
+On March 31,
+Amazon Web Services (AWS) made the DevOps Agent generally available.
+
+At first glance, it sounds like just another AI feature.
+But it’s more than that.
+
+It can:
+
+ - Generate CI/CD pipelines
+ - Debug failed deployments
+ - Analyze logs and incidents
+ - Suggest infrastructure changes
+ - Work with Terraform and CloudFormation
+ - Recommend cost optimizations
+ - Explain architecture issues
+
+Basically… it feels like having a junior DevOps engineer inside your AWS accounts.
+
+What’s interesting is not just the features.
+It’s the direction this is heading.
+Feels like AWS is slowly moving towards AI-assisted operations.
+
+ - Less manual debugging
+ - Faster feedback loops
+ - More “suggested” infrastructure decisions
+
+But I don’t think this replaces engineers.
+If anything, it raises the bar.
+
+Because now the value shifts to:
+ - Understanding systems deeply
+ - Asking the right questions
+ - And knowing when the AI is wrong
+
+Also… worth remembering:
+ - The agent can suggest changes.
+ - It doesn’t own your production incidents.
+You do.
+
+Links:
+- https://lnkd.in/ddWtMTx5
+- https://lnkd.in/dhJyrVjv
