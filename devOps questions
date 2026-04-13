@@ -128,3 +128,58 @@ If you can clearly explain one real incident end-to-end,
 you’re already ahead of most candidates.
 
 #DevOps 🚀 #Kubernetes ☸️ #SRE #ProductionIssues #CloudComputing ☁️ #Docker 🐳 #IncidentManagement #PlatformEngineering #InfrastructureAsCode #DevOpsEngineer #TechCareers #LearnDevOps #Automation 🤖 #AWS #CICD
+
+
+
+Dipak ShekokarDipak Shekokar
+
+https://www.linkedin.com/posts/dipakshekokar_80-of-devops-candidates-get-rejected-in-share-7448219630973927424-CTR5?utm_source=share&utm_medium=member_desktop&rcm=ACoAACGOFWwBXBdYtkoJw0nX7bLyQWUEVCBMsEk
+ 80% of DevOps candidates get rejected in the first 10 minutes.
+
+𝐇𝐞𝐫𝐞’𝐬 𝐰𝐡𝐲:
+• You know Docker, Kubernetes, Terraform
+• You’ve worked on CI/CD pipelines
+• You understand cloud basics
+
+𝐁𝐮𝐭 𝐭𝐡𝐞𝐧 𝐭𝐡𝐞 𝐢𝐧𝐭𝐞𝐫𝐯𝐢𝐞𝐰𝐞𝐫 𝐚𝐬𝐤𝐬:
+“Your pods are running, but users are getting 503 errors. What’s wrong?”
+And suddenly… things get real.
+
+Here are 𝟏𝟎 𝐚𝐝𝐯𝐚𝐧𝐜𝐞𝐝 𝐃𝐞𝐯𝐎𝐩𝐬 𝐪𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬 you should be ready for:
+
+1. How do you design zero-downtime deployments for stateful apps on Kubernetes?
+ → PDBs, readiness probes, preStop hooks, DB migration sequencing
+
+2. Terraform state is huge (200MB) and plan takes 12 mins. How do you fix it?
+ → State splitting, module boundaries, remote backend optimization
+
+3. Pods are Running but users see 503 errors. Where do you debug?
+ → Readiness vs liveness, endpoints, service selectors, upstream failures
+
+4. How do you manage secrets across 50+ services without exposing Vault access?
+ → Vault injector, K8s auth, dynamic secrets, external secrets operator
+
+5. How do you design GitOps for multiple teams with independent releases?
+ → ArgoCD App-of-Apps, ApplicationSets, controlled infra repos
+
+6. Image passed scans but got exploited. What did you miss?
+ → Runtime security, RBAC, seccomp, writable FS, exposed secrets
+
+7. How do you implement SLO-based alerting without alert fatigue?
+ → Error budget, burn rate alerts, multi-window strategy
+
+8. CI builds 40 Docker images and takes 18 mins. How do you optimize?
+ → BuildKit caching, parallel builds, selective rebuilds
+
+9. How do you upgrade a Kubernetes cluster with zero downtime?
+ → Cordon, drain, rolling node upgrade, compatibility checks
+
+10. Reduce cloud cost by 40% without impacting performance. Where do you start?
+ → Right-sizing, spot instances, autoscaling tuning, cost observability
+
+If you are preparing for DevOps interview, check out my 𝐃𝐞𝐯𝐎𝐩𝐬 𝐈𝐧𝐭𝐞𝐫𝐯𝐢𝐞𝐰 𝐆𝐮𝐢𝐝𝐞
+Get it here: https://lnkd.in/dtkAGrH6
+Use coupon code: 𝐃𝐄𝟐𝟎
+
+
+
