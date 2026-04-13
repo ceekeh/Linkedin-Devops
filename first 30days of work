@@ -45,3 +45,112 @@ Not because they’re bad engineers. Because they skipped the foundation.
 
 If you're the first DevOps hire in a startup, this phase isn't optional.
 It's the job.
+
+
+
+
+
+Manisha Sarkar
+
+https://www.linkedin.com/posts/manishasarkar-devops_devops-cloudcomputing-aws-share-7449008965742395392-ZIk8?utm_source=share&utm_medium=member_desktop&rcm=ACoAACGOFWwBXBdYtkoJw0nX7bLyQWUEVCBMsEk
+
+
+I applied for a DevOps role recently.
+
+3+ years of experience required.
+AWS / Azure / GCP.
+ECS, EKS, Fargate.
+CloudWatch. Grafana.
+Terraform. Python. CI/CD.
+The usual checklist.
+Pretty much every tool was there.
+
+What wasn’t there?
+How you think about systems.
+How you design for failure.
+How you make something resilient instead of fragile.
+How you make decisions that reduce cost without breaking things.
+How security is designed and enforced from Day 1.
+
+I got rejected.
+No interview.
+No conversation.
+No feedback.
+Just filtered out.
+Because on paper I have 1 year of experience.
+Here’s what that “1 year” looks like.
+
+I started from zero in cloud.
+Picked up Azure during a Microsoft CSP internship. Networking, pipelines, deployments,Terraform., AI foundry.
+Then got the opportunity to work with two startups.
+Both needed AWS infrastructure from scratch.
+I had never worked on AWS before that.
+Still said yes.
+Ended up being the solo DevOps engineer for both.
+At the same time.
+
+Built production infrastructure.
+Set up 18 CI/CD pipelines across repos and environments.
+Reduced deployment time:
+Frontend 45 minutes to 1 minute
+Backend 90 minutes to 5 minutes
+Optimized Docker image:
+1.34 GB to 263 MB
+Reduced infrastructure cost:
+$104 to $0 for 5 months.
+Handled production incidents independently at 2 AM.
+And the infrastructure?
+It held up.
+
+I remember speaking with a senior engineer.
+We were discussing production practices.
+He said:
+“Always create a non-root user in Docker.”
+I told him I was already doing that in production.
+With multi-stage builds, lightweight images, layer optimizations.
+
+He paused and said:
+“I can’t believe you’re not just aware of this you’ve already implemented it in production with less than a year of experience.”
+Different teams. Same assumption until they hear the timeline.
+
+So I keep coming back to this.
+If someone can learn in months what used to take years is that a signal or a noise?
+
+We talk about moving faster
+Learn faster. Build faster. Ship faster.
+But when someone actually does that they still get filtered out.
+Because the tenure is small.
+I’m not saying experience doesn’t matter.
+But are we measuring experience or just time spent?
+Because those aren’t the same anymore.
+
+The best engineers I’ve seen don’t think in tools.
+They think in trade-offs, failure scenarios, cost vs reliability, business impact.
+
+Day 1 they focus on identity, secrets, and blast radius.
+But hiring filters?
+They still start with:
+Years
+Keywords
+Checklists
+Before anyone looks at:
+What someone has built
+What they’ve handled
+How they think
+
+Sometimes people who have already done the work
+don’t even make it to the first conversation.
+People say they hire for impact.
+But still filter for tenure.
+So I’ll ask this.
+
+Should hiring still be based on years of experience?
+Or should it focus on the problems solved and the results already delivered?
+
+#DevOps #CloudComputing #AWS #Azure #Terraform #CICD #SoftwareEngineering #Hiring #TechCareers
+
+
+
+
+
+
