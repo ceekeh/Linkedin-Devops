@@ -183,3 +183,24 @@ Use coupon code: 𝐃𝐄𝟐𝟎
 
 
 
+https://www.linkedin.com/posts/kiransurya-devops_recently-interviewed-for-devops-engineer-share-7455482294431137792-zOhg?utm_source=share&utm_medium=member_desktop&rcm=ACoAACGOFWwBXBdYtkoJw0nX7bLyQWUEVCBMsEk
+
+Recently interviewed for DevOps Engineer position with 3-6 years of experience. Here are the questions asked - 
+
+
+How many microservices you have in your application?
+2. How many containers, pods, nodes you run in your EKS cluster?
+3. How will you avoid brute force attack on your application?
+4. How will you provide the application security and also your infrastructure security?
+5. How will you ensure High availability of your application and infrastructure?
+6. How will you manage your terraform code for different environment?
+7. What metrics do you use for your application monitoring and why did you use choose those particular metrics?
+8. How will you troubleshoot the incidents using the metrics you described earlier?
+9. What FinOps practices you implemented in your previous company?
+10. How will you avoid any DDoS attacks on your application?
+ 11. How does Terraform manage state and how do you prevent simultaneous apply conflicts?
+12. Docker container at 100% CPU. Cannot restart — processing critical financial transaction, what will you do to complete the transaction?
+13. An application is running in your container in pod, but still user faces downtime in accessing it. Explain the process you carry out to troubleshoot this incident?
+
+
+
